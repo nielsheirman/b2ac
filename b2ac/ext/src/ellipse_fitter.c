@@ -311,9 +311,19 @@ static PyMethodDef EFMethods[] = {
      {NULL, NULL, 0, NULL} /* Sentinel */
 };
 
-PyMODINIT_FUNC initellipse_fitter(void)
+static struct PyModuleDef ellipse_fitter = {
+    PyModuleDef_HEAD_INIT,
+    "ellipse_fitter",   /* name of module */
+    "Ellipse Fitting extension.", /* module documentation, may be NULL */
+    -1,       /* size of per-interpreter state of the module,
+                 or -1 if the module keeps state in global variables. */
+    EFMethods
+};
+
+PyMODINIT_FUNC PyInit_ellipse_fitter(void)
 {
-    char * docstring = "Ellipse Fitting extension.";
-    (void) Py_InitModule3("ellipse_fitter", EFMethods, docstring);
+    return PyModule_Create(&ellipse_fitter);
+    // char * docstring = "Ellipse Fitting extension.";
+    // (void) Py_InitModule3("ellipse_fitter", EFMethods, docstring);
     import_array();
 }
