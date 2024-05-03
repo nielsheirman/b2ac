@@ -14,24 +14,23 @@ Created on 2015-10-02
 
 """
 
-from __future__ import division
-from __future__ import print_function
-from __future__ import unicode_literals
-from __future__ import absolute_import
+from __future__ import absolute_import, division, print_function, unicode_literals
+
+from unittest import TestCase
 
 import numpy as np
-import b2ac.ext.ellipse_fitter as fitext
 
-from b2ac.fit import fit_improved_B2AC_int
 import b2ac.conversion as c2gconv
-from b2ac.preprocess import remove_mean_values
+import b2ac.ext.ellipse_fitter as fitext
+from b2ac.fit import fit_improved_B2AC_int
 from b2ac.geometry.ellipse import B2ACEllipse
 from b2ac.geometry.overlap.overlap_functions import overlap
+from b2ac.preprocess import remove_mean_values
 
 
-class TestIntegerImplementations(object):
+class TestIntegerImplementations(TestCase):
 
-    def setup(self):
+    def setUp(self):
         self.e = B2ACEllipse(center=(50.0, 75.0), radii=(50.0, 20.0), rotation_angle=0.707)
         self.points = np.array(self.e.polygonize(), 'int32')
 

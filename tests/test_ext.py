@@ -14,27 +14,20 @@ Created on 2015-10-13
 
 """
 
-from __future__ import division
-from __future__ import print_function
-from __future__ import unicode_literals
-from __future__ import absolute_import
+from __future__ import absolute_import, division, print_function, unicode_literals
 
-
-from __future__ import division
-from __future__ import print_function
-from __future__ import unicode_literals
-from __future__ import absolute_import
+from unittest import TestCase
 
 import numpy as np
-import b2ac.ext.ellipse_fitter as fitext
 
+import b2ac.ext.ellipse_fitter as fitext
 from b2ac.geometry.ellipse import B2ACEllipse
 from b2ac.geometry.overlap.overlap_functions import overlap
 
 
-class TestExtensions(object):
+class TestExtensions(TestCase):
 
-    def setup(self):
+    def setUp(self):
         self.e = B2ACEllipse(center=(50.0, 75.0), radii=(50.0, 20.0), rotation_angle=0.707)
         self.points = np.array(self.e.polygonize(), 'int32')
 
